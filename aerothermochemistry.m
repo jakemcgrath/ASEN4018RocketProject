@@ -3,6 +3,8 @@ function[SM_results] = aerothermochemistry(Pc, AR_sup)
     % Define Propellant Ingredients & initial condition 
     
     % For example
+    SM_inputs = CEAinput();
+    
     SM_inputs.ox1      = 'NH4CLO4(I)';           %primary oxidizer
     SM_inputs.ox1T     = 298;                    %primary ox temp (K)
 

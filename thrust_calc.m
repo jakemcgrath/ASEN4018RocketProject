@@ -3,14 +3,14 @@ function [ThSM_en, Cstar] = thrust_calc(Pa, Pc, Ae, rho_p, burn_rate, A_burn, AR
 
     %% Aerothermochemistry Data
     ERROR = 0;
-    %try % tests if there is any output
+    try % tests if there is any output
         % OUTPUT1 GIVES VALUES IN THE CHAMBER
         % OUTPUT2 GIVES VALUES AT THE NOZZLE THROAT
         % OUTPUT3 GIVES VALUES AT NOZZLE EXIT
         [Output] = aerothermochemistry(Pc, AR_sup);
-    %catch
-    %   ERROR = 1;
-    %end
+    catch
+      ERROR = 1;
+    end
     
     %if ERROR == 1 % sets Mach and alpha to zero if output DNE
     %    alpha = 0;
