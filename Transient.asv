@@ -64,7 +64,4 @@ while 0% rb < (r_grain_o - r_grain_i) && rb < h_grain % while there is unburned 
     j = j+1;
 end
 
-%% Empirical Results
-
-Isp_vendor = trapz(T_vendor(:,1),T_vendor(:,2))
-plot(T_vendor(:,1),T_vendor(:,2));
+plot(T_vendor()T_vendor)
