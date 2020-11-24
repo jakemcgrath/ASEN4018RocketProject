@@ -16,7 +16,11 @@ T_exp = csvread('Test.csv');  % data from CU experimental static fire
 
 %% INPUTS
 cstar_eff = 1.; % [-], cstar efficiency
+
+t_step = 0.01; % [s] time step
+
 t_step = 0.1; % [s] time step
+
 P_atm = 101325.; % [Pa] ambient pressure
 a = .000005; % [-] burn rate coefficient
 n = 0.5; % [-] burn rate exponent
@@ -45,7 +49,11 @@ AR_sup = A_exit/A_throat; % supersonic area ratio
 %V_burn = 0; % [m^3]
 %V_chamber = 0; % [m^3]
 j = 1;
+
+while 0% rb < (r_grain_o - r_grain_i) && rb < h_grain % while there is unburned grain remaining
+
 while rb < (r_grain_o - r_grain_i) && rb < h_grain % while there is unburned grain remaining
+
     [A_burn(j), V_burn(j)] = burn_geometry(r_grain_i,r_grain_o,h_grain,rb); % [m] burn area, burn cavity volume
     Pc(j) = ((a * rho_p * A_burn(j) * cstar) / (A_throat)).^((1)/(1-n)); % [Pa] chamber pressure
     burn_rate(j) = a*(Pc(j))^n; % [m/s] burn rate
@@ -63,4 +71,11 @@ while rb < (r_grain_o - r_grain_i) && rb < h_grain % while there is unburned gra
     end
     j = j+1;
 end
+
+
+%% Empirical Results
+
+Isp_vendor = trapz(T_vendor(:,1),T_vendor(:,2))
+plot(T_vendor(:,1),T_vendor(:,2));
+
 
